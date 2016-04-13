@@ -44,7 +44,7 @@ repos.each do |repo|
   if contributor?(repo, login)
     puts "Contributor for #{repo.full_name}"
   else
-    puts "Not a contributor for #{repo.full_name}. Ignoring notifications"
-    client.update_subscription(repo.full_name, ignored: true)
+    puts "Not a contributor for #{repo.full_name}. Not watching it anymore."
+    client.delete_subscription(repo.full_name)
   end
 end
